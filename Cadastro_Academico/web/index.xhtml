@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Cadastro Acadêmico</title>
+        <link href="css/estilo.css" type="text/css" rel="stylesheet"/>
+    </h:head>
+    
+    <body>
+       
+        <center>
+            
+            <h:form id="form">
+                <legend><h3>Formulario de Cadastro de Alunos</h3></legend>
+                <h:outputLabel value="Matricula:" ></h:outputLabel><br/>
+                <h:inputText id="matricula" value="#{usu.matricula}"></h:inputText>
+                <br/><br/>
+                <h:outputLabel value="Nome:"></h:outputLabel><br/>
+                <h:inputText id="nome" value="#{usu.nome}"></h:inputText>
+                <br/><br/>
+                <h:outputLabel value="Data de Nascimento:"></h:outputLabel><br/>
+                <h:inputText id="dt_nascimento" value="#{usu.dt_nascimento}"></h:inputText>
+                <br/><br/>
+                <h:outputLabel value="Email:"></h:outputLabel><br/>
+                <h:inputText id="email" value="#{usu.email}"></h:inputText>
+                <br/><br/>
+                
+                <h:commandButton type="submit" value="Cadastrar" action="#{usu.addAluno}"></h:commandButton>
+                <h:commandButton type="reset" value="Limpar" ></h:commandButton>
+                </h:form>
+            <h:form>
+                <h:panelGrid columns="1">
+          <!--criando minha tabela, incluido no value a lista de cliente, definino um variavel de acesso para cada registro, para acessar um unico registro-->
+          <p:dataTable id="tabela" value="#{usu.alunos}" var="alunos" emptyMessage="Nenhum registro incluido." paginator="true" rows="10"  rowKey="#{usu.alunos.matricula}"  >
+              <!--Definindo o cabeçalho da Tabela--> 
+              <f:facet name="header">
+                  Lista de Alunos
+              </f:facet>
+              
+             <!--Aqui onde acesso o objeto usuario.nome e apresentamos na tabela, e assim com os seguintes-->
+              <!--Criando uma coluna para receber um determinando dado que tem em um objeto da nossa lista, nesse caso nome do usuario-->
+             <p:column headerText="Matricula" style="text-align: center">
+                 <h:outputText value="#{alunos.matricula}"/>
+             </p:column>
+             <p:column headerText="Nome" style="text-align: center">
+                 <h:outputText value="#{alunos.nome}"/>
+             </p:column>
+             <p:column headerText="Data de Nascimento" style="text-align: center">
+                 <h:outputText value="#{alunos.dt_nascimento}"/>
+             </p:column>
+             <p:column headerText="Email" style="text-align: center">
+                 <h:outputText value="#{alunos.email}"/>
+             </p:column>
+              <p:column headerText="EDITAR" >
+                  <h:commandButton action="#{usu.editar(alunos)}" value="Editar"/>
+              </p:column>
+                <p:column headerText="EXCLUIR" >
+                  <h:commandButton action="#{usu.excluir(alunos)}" value="Excluir"/>
+              </p:column>
+              
+         </p:dataTable>
+          </h:panelGrid>
+            </h:form>
+        </center>
+    </body>
+</html>
+

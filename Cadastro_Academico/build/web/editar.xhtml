@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Cadastro de Alunos</title>
+        <link href="css/estilo.css" type="text/css" rel="stylesheet"/>
+    </h:head>
+    <body bgcolor="white">
+        
+        <center>
+        <h3>Alterar o Cadastro do aluno</h3>
+        <h:form id="form">
+            <h:outputLabel value="Matricula:"  ></h:outputLabel><br/>
+            <h:outputLabel id="matricula" value="#{usu.matricula}"></h:outputLabel>
+            <br/><br/>
+            <h:outputLabel value="Nome:"></h:outputLabel><br/>
+            <h:inputText id="nome" value="#{usu.nome}"></h:inputText>
+            <br/><br/>
+            <h:outputLabel value="Data de Nascimento:"></h:outputLabel><br/>
+            <h:inputText id="dt_nascimento" value="#{usu.dt_nascimento}"></h:inputText>
+            <br></br>
+            <h:outputLabel value="Email:"></h:outputLabel><br/>
+            <h:inputText id="email" value="#{usu.email}"></h:inputText>
+            <br/><br/>
+            <h:commandButton type="submit" value="Alterar" action="#{usu.alterar()}"></h:commandButton>
+            <h:commandButton type="reset" value="Limpar" ></h:commandButton>
+        </h:form>
+        </center>
+    </body>
+</html>
